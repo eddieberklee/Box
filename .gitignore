@@ -1,0 +1,12 @@
+# Steven Buccini, Nikita Kouevda, Eddie Lee
+# 2012/10/02
+
+# OS X
+.DS_Store
+
+# Temporary vim files
+*.swp
+
+# Compiled Python files
+*.pyc
+__pycache__

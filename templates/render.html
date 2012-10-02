@@ -1,0 +1,97 @@
+<!doctype html>
+
+<!-- Steven Buccini, Nikita Kouevda, Eddie Lee -->
+<!-- 2012/10/02 -->
+
+<html>
+
+<head>
+  <link href='../static/reset.css' rel='stylesheet' />
+  <link href='../static/survey.css' rel='stylesheet' />
+  <style>
+    #slider { margin: 20px; }
+  </style>
+</head>
+
+<body>
+
+<div id='container'>
+  <div id='header'>
+    <div id='logo'>
+      LOGO
+    </div>
+  </div>
+  <div id='body'>
+    <div class='banner'></div>
+    <div id='batting'>
+      <div class='h2'>
+        Jobs
+      </div>
+      <table>
+        {% for key in quotes %}
+        <tr>
+          <td>
+            <div class='box-{{ key }}'>
+              <div class='quotebox'>
+                <span class='quote' person="{{ quotes[key][0]['person']|e }}" weight="{{ quotes[key][0]['weight']|e }}">"{{ quotes[key][0]['quote']|e }}"</span>
+              </div>
+              <img class='triangle' src='../static/triangle.png' />
+              <div class='clear'></div>
+            </div>
+            <div class='clear'></div>
+          </td>
+          <td>
+            <div class="slider" style="width: 200px;"></div>
+          </td>
+          <td>
+            <div class='box-{{ key }}'>
+              <div class='quotebox'>
+                <span class='quote' person="{{ quotes[key][1]['person']|e }}" weight="{{ quotes[key][1]['weight']|e }}">"{{ quotes[key][1]['quote']|e }}"</span>
+              </div>
+              <img class='triangle' src='../static/triangle.png' />
+              <div class='clear'></div>
+            </div>
+            <div class='clear'></div>
+          </td>
+        </tr>
+        <tr class='spacing'>
+          <td>
+            empty
+          </td>
+          <td>
+            empty
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    <button id="next_button">Pot</button>
+    <div id='batter_up'>
+      batter up
+    </div>
+  </div>
+  <div id='footer'>
+    <span>ABOUT</span>
+    <span>CONTACT</span>
+    <span>TERMS</span>
+    <span>PRIVACY</span>
+    <span>DATA SOURCES</span>
+  </div>
+</div>
+
+<script src='../static/jquery-1.7.2.min.js'></script>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<script src="../static/sliders/jquery-ui-1.8.24.custom.min.js"></script>
+<script src='../static/code.js'></script>
+
+<script type='text/javascript'>
+  //<![CDATA[
+    $(function() {
+      //window.setTimeout("window.location.reload()", 2000);
+    });
+  //]]>
+</script>
+
+</body>
+
+</html>
