@@ -7,8 +7,8 @@ A service that provides unbiased political surveys.
 
 ## Usage
 
-    python main.py
+    bash setup.sh && python main.py
 
 or (with execute permission):
 
-    ./main.py
+    ./setup.sh && ./main.py

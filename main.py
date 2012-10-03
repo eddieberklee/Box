@@ -16,8 +16,8 @@ app = Flask(__name__)
 connection = Connection()
 db = Database(connection, "Box")
 
-# Questions per page
-qpp = 3
+# Pairs of quotes per page
+pqpp = 3
 
 @app.route("/")
 def root():
@@ -27,20 +27,20 @@ def root():
 def quotes():
     category = str(request.args.get("category")) if request.args else "Foreign Policy"
 
-    # Pairs of questions to be displayed
-    questions = {}
+    # Pairs of quotes to be displayed
+    quotes = {}
 
     # All distinct weights in the database
-    weights = db.questions.find({"category": category}).distinct("weight")
+    weights = db.quotes.find({"category": category}).distinct("weight")
 
     # Data cache and quotes to display
     cache, display = {}, {}
 
-    for i in range(qpp):
+    for i in range(pqpp):
         rand_weight = weights[random.randrange(len(weights))]
 
         if str(rand_weight) not in cache:
-            cache[str(rand_weight)] = {"Obama": [x for x in db.questions.find({"category": category, "weight": rand_weight, "person": "Obama"})], "Romney": [x for x in db.questions.find({"category": category, "weight": rand_weight, "person": "Romney"})]}
+            cache[str(rand_weight)] = {"Obama": [x for x in db.quotes.find({"category": category, "weight": rand_weight, "person": "Obama"})], "Romney": [x for x in db.quotes.find({"category": category, "weight": rand_weight, "person": "Romney"})]}
 
         options = cache[str(rand_weight)]["Obama"]
         rand_index = random.randrange(len(options))
