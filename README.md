@@ -8,3 +8,7 @@ A service that provides unbiased political surveys.
 ## Usage
 
     python main.py
+
+or (with execute permission):
+
+    ./main.py
