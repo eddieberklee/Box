@@ -13,7 +13,7 @@
   <script src="/static/js/jquery-1.7.2.min.js" type="text/javascript"></script>
   <script src="/static/js/jquery-ui-1.8.24.custom.min.js" type="text/javascript"></script>
   <script src="/static/js/code.js" type="text/javascript"></script>
-  <script type='text/javascript'>
+  <script type="text/javascript">
     //<![CDATA[
       $(function() {
         //window.setTimeout("window.location.reload()", 2000);
@@ -24,46 +24,46 @@
 
 <body>
 
-<div id='container'>
-  <div id='header'>
-    <div id='logo'>
+<div id="container">
+  <div id="header">
+    <div id="logo">
       LOGO
     </div>
   </div>
-  <div id='body'>
-    <div class='banner'></div>
-    <div id='batting'>
-      <div class='h2'>
+  <div id="body">
+    <div class="banner"></div>
+    <div id="batting">
+      <div class="h2">
         Jobs
       </div>
       <table>
         {% for key in quotes %}
         <tr>
           <td>
-            <div class='box-{{ key }}'>
-              <div class='quotebox'>
-                <span class='quote' person="{{ quotes[key][0]['person']|e }}" weight="{{ quotes[key][0]['weight']|e }}">"{{ quotes[key][0]['quote']|e }}"</span>
+            <div class="box-{{ key }}">
+              <div class="quotebox">
+                <span class="quote" person="{{ quotes[key][0]['person']|e }}" weight="{{ quotes[key][0]['weight']|e }}">"{{ quotes[key][0]['quote']|e }}"</span>
               </div>
-              <img class='triangle' src='../static/triangle.png' />
-              <div class='clear'></div>
+              <img class="triangle" src="/static/img/triangle.png" />
+              <div class="clear"></div>
             </div>
-            <div class='clear'></div>
+            <div class="clear"></div>
           </td>
           <td>
             <div class="slider" style="width: 200px;"></div>
           </td>
           <td>
-            <div class='box-{{ key }}'>
-              <div class='quotebox'>
-                <span class='quote' person="{{ quotes[key][1]['person']|e }}" weight="{{ quotes[key][1]['weight']|e }}">"{{ quotes[key][1]['quote']|e }}"</span>
+            <div class="box-{{ key }}">
+              <div class="quotebox">
+                <span class="quote" person="{{ quotes[key][1]['person']|e }}" weight="{{ quotes[key][1]['weight']|e }}">"{{ quotes[key][1]['quote']|e }}"</span>
               </div>
-              <img class='triangle' src='../static/triangle.png' />
-              <div class='clear'></div>
+              <img class="triangle" src="/static/img/triangle.png" />
+              <div class="clear"></div>
             </div>
-            <div class='clear'></div>
+            <div class="clear"></div>
           </td>
         </tr>
-        <tr class='spacing'>
+        <tr class="spacing">
           <td>
             empty
           </td>
@@ -75,11 +75,8 @@
       </table>
     </div>
     <button id="next_button">Next</button>
-    <div id='batter_up'>
-      batter up
-    </div>
   </div>
-  <div id='footer'>
+  <div id="footer">
     <span>ABOUT</span>
     <span>CONTACT</span>
     <span>TERMS</span>

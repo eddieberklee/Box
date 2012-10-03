@@ -25,36 +25,33 @@ def root():
 
 @app.route('/quotes', methods=['GET'])
 def quotes():
-    try:
-        category = str(request.args.get("category")) if request.args else "Foreign Policy"
+    category = str(request.args.get("category")) if request.args else "Foreign Policy"
 
-        # Pairs of questions to be displayed
-        questions = {}
+    # Pairs of questions to be displayed
+    questions = {}
 
-        # All distinct weights in the database
-        weights = db.questions.find({"category": category}).distinct("weight")
+    # All distinct weights in the database
+    weights = db.questions.find({"category": category}).distinct("weight")
 
-        # Data cache and quotes to display
-        cache, display = {}, {}
+    # Data cache and quotes to display
+    cache, display = {}, {}
 
-        for i in range(qpp):
-            rand_weight = weights[random.randrange(len(weights))]
+    for i in range(qpp):
+        rand_weight = weights[random.randrange(len(weights))]
 
-            if str(rand_weight) not in cache:
-                cache[str(rand_weight)] = {"Obama": [x for x in db.questions.find({"category": category, "weight": rand_weight, "person": "Obama"})], "Romney": [x for x in db.questions.find({"category": category, "weight": rand_weight, "person": "Romney"})]}
+        if str(rand_weight) not in cache:
+            cache[str(rand_weight)] = {"Obama": [x for x in db.questions.find({"category": category, "weight": rand_weight, "person": "Obama"})], "Romney": [x for x in db.questions.find({"category": category, "weight": rand_weight, "person": "Romney"})]}
 
-            options = cache[str(rand_weight)]["Obama"]
-            rand_index = random.randrange(len(options))
-            one = options.pop(rand_index)
+        options = cache[str(rand_weight)]["Obama"]
+        rand_index = random.randrange(len(options))
+        one = options.pop(rand_index)
 
-            options = cache[str(rand_weight)]["Romney"]
-            rand_index = random.randrange(len(options))
-            two = options.pop(rand_index)
+        options = cache[str(rand_weight)]["Romney"]
+        rand_index = random.randrange(len(options))
+        two = options.pop(rand_index)
 
-            # Randomize order
-            display[str(i)] = [one, two] if random.randrange(2) else [two, one]
-    except Exception as ex:
-        print(ex)
+        # Randomize order
+        display[str(i)] = [one, two] if random.randrange(2) else [two, one]
 
     return str(display) if category == "Economy" else display
 

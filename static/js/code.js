@@ -82,8 +82,12 @@ $(function() {
             url: "/quotes",
             data: {category:send_category},
             success: function(result) {
-                // Regex the incoming text into proper JSON
-                var obj = $.parseJSON(result.replace(/\'/g, "\"").replace(/u\"/g, "\"").replace(/(\d)\.(\d)/g, "\"$1.$2\"").replace(/ObjectId\(\"(.*?)\"\)/g, "\"$1\""));
+                // FIXME: this is very unsafe; find a proper way to pass data
+                var singleDouble = result.replace(/\'/g, "\"");
+                var unicodeStr = singleDouble.replace(/u\"/g, "\"");
+                var quoteNumbers = unicodeStr.replace(/(\d)\.(\d),/g, "\"$1.$2\",");
+                var objectID = quoteNumbers.replace(/ObjectId\(\"(.*?)\"\)/g, "\"$1\"");
+                var obj = $.parseJSON(objectID);
 
                 var pair1 = obj["0"];
                 var pair1_quote1 = pair1["0"];
