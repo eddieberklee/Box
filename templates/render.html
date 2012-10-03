@@ -40,6 +40,7 @@
         {% for key in quotes %}
         <tr>
           <td>
+            <div class="slider" style="width: 200px;"></div>
             <div class="box-{{ key }}">
               <div class="quotebox">
                 <span class="quote" person="{{ quotes[key][0]['person']|e }}" weight="{{ quotes[key][0]['weight']|e }}">"{{ quotes[key][0]['quote']|e }}"</span>
@@ -48,9 +49,6 @@
               <div class="clear"></div>
             </div>
             <div class="clear"></div>
-          </td>
-          <td>
-            <div class="slider" style="width: 200px;"></div>
           </td>
           <td>
             <div class="box-{{ key }}">

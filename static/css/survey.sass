@@ -1,0 +1,194 @@
+/*  SASS BY ED */
+
+.clear
+  clear: both
+
+$dblue: #2B5276
+$blue: #5AA4FC
+$yellow: #F1E332
+$orange: #D07418
+$dorange: #A74F1E
+$gray: #666
+$lgray: #aaa
+
+@mixin css3-select
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+@mixin css3-opacity($amount)
+  opacity: $amount
+  filter:alpha(opacity=$amount)
+
+@mixin css3-transition($prop,$time)
+  -o-transition: $prop $time
+  -ms-transition: $prop $time
+  -moz-transition: $prop $time
+  -webkit-transition: $prop $time
+  transition: $prop $time
+  transition-timing-function: ease-out
+
+@mixin css3-gradient($start,$end)
+  background: $start
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$start, endColorstr=$end)
+  background: -webkit-gradient(linear, left top, left bottom, from($start), to($end))
+  background: -moz-linear-gradient(top,  $start,  $end)
+
+@mixin css3-box-shadow($x,$y,$r,$c)
+  -ms-box-shadow: $x $y $r $c
+  -o-box-shadow: $x $y $r $c
+  -moz-box-shadow: $x $y $r $c
+  -webkit-box-shadow: $x $y $r $c
+  box-shadow: $x $y $r $c
+
+@mixin css3-text-shadow($x,$y,$r,$c)
+  -ms-text-shadow: $x $y $r $c
+  -o-text-shadow: $x $y $r $c
+  -moz-text-shadow: $x $y $r $c
+  -webkit-text-shadow: $x $y $r $c
+  text-shadow: $x $y $r $c
+  
+body
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+  background-color: lighten($lgray,20%)
+  background-image: url("noise.png")
+
+$table_width: 440px
+$td_width: $table_width / 2
+$td_height: 200px
+$spacer_height: 70px
+
+table
+  width: $table_width
+  margin: 0 auto
+  text-align: center
+  border: 0
+  overflow: hidden
+
+  td
+    width: $td_width
+    height: $td_height
+    // outline: 1px solid $gray
+    position: relative
+
+  tr.spacing
+    visibility: hidden
+    td
+      height: $spacer_height
+      line-height: $spacer_height
+
+.slider
+  position: absolute
+  top: $td_height - 35px
+  left: $td_width / 2 + 10px
+  // put just above the quoteboxes
+  z-index: 2
+  @include css3-box-shadow(0px,0px,12px,rgba(0,0,0,0.25))
+  @include css3-box-shadow(0px,0px,30px,rgba(255,255,255,0.3))
+
+.h2
+  width: 100%
+  margin-top: 35px
+  margin-bottom: 35px
+  padding-left: 20px
+  padding-top:    15px
+  padding-bottom: 15px
+  font-size: 1.5em
+  color: #fff
+  background-color: rgba(0,0,0,0.4)
+  text-transform: uppercase
+  border-top: 1px solid lighten($gray,50%)
+  border-bottom: 1px solid darken($gray,15%)
+
+.banner
+  width: 100%
+  height: 20px
+  background-image: url("banner.png")
+  background-repeat: repeat-x
+  margin-top: 10px
+  margin-bottom: 10px
+  opacity: 50%
+
+$quotebox_color: #707070
+$quotebox_height: $td_height * 0.9
+
+.box-0,.box-1,.box-2,.box-4
+  width: 100%
+  height: 100%
+  cursor: pointer
+  @include css3-select
+  @include css3-transition(all,0.1s)
+  float: left
+  background-color: lighten($quotebox_color,20%)
+
+  &:hover
+    background-color: lighten($quotebox_color,25%)
+    @include css3-box-shadow(0px, 0px, 15px, rgba(0,0,0,0.4))
+    @include css3-transition(all,0.1s)
+  &:active
+    background-color: lighten($quotebox_color,30%)
+
+.quotebox,.quotebox_sacrificial
+  width: $td_width * 0.9
+  margin: 0 auto
+  background-color: $quotebox_color
+  padding: 15px 5px
+  
+.quotebox
+  height: $td_height * 0.7
+  margin-top: 7px
+  line-height: 22px
+  color: #fff
+
+.quote
+  line-height: 19px
+
+.quotebox_sacrificial
+  height: 0px
+
+.triangle
+  width: 25px
+  float: left
+  margin-bottom: 10px
+  position: relative
+  left: 40px
+
+$container_width: 800px
+
+#container
+  width: $container_width
+  margin: 0 auto
+  background-color: lighten($lgray,10%)
+  overflow: hidden
+  @include css3-box-shadow(0px,0px,40px,rgba(0,0,0,0.2))
+
+#header,#body,#footer
+  // outline: 1px solid $blue
+
+#next_button
+  width: 100px
+  display: block
+  font-size: 1.5em
+  margin: 0 auto
+  text-align: center
+  margin-top: 20px
+  margin-bottom: 200px
+  cursor: pointer
+
+#body
+  margin-top: 10px
+  margin-bottom: 10px
+  overflow: hidden
+  position: relative
+
+#batting,#batter_up
+#batter_up
+  outline: 2px solid pink
+  position: absolute
+  // this top part is not configurable yet - sorry!
+  top: 65px
+  left: $container_width
+
