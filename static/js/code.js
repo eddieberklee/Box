@@ -14,10 +14,6 @@ $(function() {
         max: 100,
     });
 
-    function replace_calling_ajax() {
-        $("div#batter_up").html();
-    }
-
     $("#next_button").click(function() {
         if (categories.length == 1) {
             var data = scores;

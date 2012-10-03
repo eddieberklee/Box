@@ -154,10 +154,3 @@ table tr.spacing td {
 #batting {
   outline: 2px solid red;
 }
-
-#batter_up {
-  outline: 2px solid pink;
-  position: absolute;
-  top: 65px;
-  left: 800px;
-}
